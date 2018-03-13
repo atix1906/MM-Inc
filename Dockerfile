@@ -1,12 +1,8 @@
 FROM ubuntu:latest
 RUN \
     apt update && \
-    apt upgrade -y && \
-    apt install --fix-missing --no-install-recommends -y git curl ca-certificates python3 python3-pip
+    apt upgrade -y
 COPY inc.sh /root
 RUN chmod 0777 /root/inc.sh
-RUN pip3 install redis
 EXPOSE 80
-ENV REDIS_HOST=""
-ENV REDIS_PORT=6379
 CMD [ "/root/inc.sh" ]
